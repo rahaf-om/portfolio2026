@@ -74,7 +74,7 @@ const Projects = () => {
           <h2 className="section-title">Featured Projects</h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -82,7 +82,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group bg-white dark:bg-slate-800 p-8 rounded-[2rem] border border-brand-dark/5 dark:border-slate-700 shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 hover:-translate-y-2 transition-all relative overflow-hidden flex flex-col ${index === 2 && 'lg:col-span-2 lg:flex-row gap-8'}`}
+              className="group bg-white dark:bg-slate-800 p-8 rounded-[2rem] border border-brand-dark/5 dark:border-slate-700 shadow-sm hover:shadow-2xl hover:shadow-brand-teal/10 hover:-translate-y-2 transition-all relative overflow-hidden flex flex-col"
             >
               {project.featured && (
                 <div className="absolute top-6 right-6">
@@ -92,7 +92,7 @@ const Projects = () => {
                 </div>
               )}
 
-              <div className={`flex-1 ${index === 2 ? 'mb-0 lg:pr-12' : 'mb-8'}`}>
+              <div className="flex-1 mb-8">
                 <p className="text-brand-teal font-bold text-sm tracking-widest uppercase mb-3 pr-24">
                   {project.role}
                 </p>
@@ -112,7 +112,7 @@ const Projects = () => {
                 </div>
               </div>
 
-              <div className={`${index === 2 ? 'lg:flex lg:items-end' : 'mt-auto pt-6 border-t border-brand-dark/5 dark:border-slate-700'}`}>
+              <div className="mt-auto pt-6 border-t border-brand-dark/5 dark:border-slate-700">
                 <button 
                   onClick={(e) => handleAction(e, project.actionType, project.actionUrl)}
                   className="inline-flex items-center gap-2 text-brand-dark dark:text-white font-bold group-hover:text-brand-teal transition-all hover:gap-3"
