@@ -1,0 +1,67 @@
+Component Architecture of PORTFOLIO WEBSITE STRUCTURE
+├── **Hero Section**
+│   ├── Name: Rahaf Rababah
+│   ├── Title: Product-Oriented Software Engineer
+│   ├── Location: Amman, Jordan
+│   ├── Brief intro (2-3 lines from your job objective)
+│   └── Call-to-action buttons (View Work, Contact)
+│
+├── **Core Expertise Cards** (Inspired by policy note style)
+│   ├── AI/ML Engineering
+│   ├── Full-Stack Development
+│   ├── Product Strategy
+│   └── Vibe Coding/AI Tools
+│
+├── **Featured Projects Grid** (Main portfolio showcase)
+│   ├── Project 1: AI Image Enhancer (Graduation Project)
+│   ├── Project 2: WebTeb Symptom Checker
+│   ├── Project 3: Ramadan AI Chatbot MVP
+│   ├── Project 4: Vitiligo Research Paper
+│   └── Project 5: RESTful Auth System
+│
+├── **Experience Timeline**
+│   ├── Mawdoo - AI & Product Owner Intern
+│   ├── Coach You Program - MoDEE
+│   └── QA Training - PSUT
+│
+├── **Technical Skills Wall**
+│   ├── Languages (Python, Java, C#, etc.)
+│   ├── Frameworks (React, Django, etc.)
+│   └── Tools (Git, Figma, Cursor, etc.)
+│
+└── **Contact Section** (ID card style)
+    ├── Professional info card
+    ├── Social links
+    └── Download CV button
+
+>>>>>>>>>>>>>>>>>
+Project Detail Cards Structure
+
+┌─────────────────────────────────────┐
+│  [ICON]  PROJECT NAME                │
+│         (Role/Type)                  │
+├─────────────────────────────────────┤
+│  BRIEF DESCRIPTION                   │
+│  • Key point 1                       │
+│  • Key point 2                       │
+│  • Key point 3                       │
+├─────────────────────────────────────┤
+│  [TECH1] [TECH2] [TECH3] [TECH4]    │
+├─────────────────────────────────────┤
+│  View Details →                      │
+└─────────────────────────────────────┘
+
+>>>>>>>>
+optional and allow for creativity :
+Color Palette Strategy
+Based on your brand from previous business card:
+
+Primary Dark Blue: #2C3E50 (headers, important text)
+
+Secondary Teal: #18A497 (accents, buttons, icons)
+
+Accent Orange: #F39C12 (highlights, call-to-action)
+
+Light Background: #ECF0F1 (card backgrounds)
+
+White: #FFFFFF (main background) 

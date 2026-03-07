@@ -1,0 +1,150 @@
+You are an expert UI/UX designer and full-stack developer specializing in portfolio websites for tech professionals. Create a stunning, fully responsive portfolio website for Rahaf Rababah, a Product-Oriented Software Engineer. This website should blend the clean, professional aesthetic of the reference ID cards with modern, interactive web design.
+
+## PROJECT CONTEXT
+Rahaf is a Computer Science graduate (Yarmouk University, 2025) with expertise in:
+- AI/ML (PyTorch, CNNs, research paper on Vitiligo diagnosis)
+- Full-stack development (React, Django, Node.js)
+- Product strategy (Mawdoo internship, PRD writing, stakeholder management)
+- Modern AI tools (Cursor, Copilot, vibe coding workflows)
+
+She needs a portfolio that showcases her unique value: bridging academic research with product-driven development.
+
+## DESIGN REQUIREMENTS
+
+### Overall Aesthetic
+- **Style:** Clean, professional, card-based layout inspired by the attached ID cards
+- **Mood:** Innovative, trustworthy, technically sophisticated
+- **Layout:** Asymmetric grid with clear hierarchy
+- **Typography:** 
+  - Headers: 'Poppins' or 'Inter' (bold, clean)
+  - Body: 'Inter' or 'Roboto' (readable, professional)
+  - Monospace for code snippets/tech tags: 'JetBrains Mono' or 'Fira Code'
+
+### Color Palette
+- Primary: #2C3E50 (Dark Blue) - Headers, important text
+- Secondary: #18A497 (Teal) - Buttons, links, interactive elements
+- Accent: #F39C12 (Orange) - Highlights, special badges, hover states
+- Background: #FFFFFF (main) and #ECF0F1 (card backgrounds)
+- Text: #2C3E50 (primary), #4a5568 (secondary)
+
+### Header/Intro Section
+- Name: Rahaf Rababah (large, bold)
+- Title: Product-Oriented Software Engineer
+- Location: Amman, Jordan with flag/icon
+- Brief intro: "Computer Science graduate bridging academic research with real-world AI applications. Experienced in leading projects from concept to deployment, with a startup idea selected in a 2024 hackathon."
+- Action buttons: "View Projects" and "Contact Me"
+
+### Core Expertise Cards (4 cards in a row on desktop)
+Create four cards styled like the policy note box from the reference:
+
+Card 1 - AI & Deep Learning:
+- Icon: 🧠 or 🤖
+- Title: AI Engineering
+- Details: PyTorch, CNNs, Medical AI Research
+
+Card 2 - Full-Stack Development:
+- Icon: ⚛️ or 💻
+- Title: Full-Stack
+- Details: React, Django, Node.js, PostgreSQL
+
+Card 3 - Product Strategy:
+- Icon: 📊 or 🎯
+- Title: Product Owner
+- Details: PRD Writing, Stakeholder Mgmt, SDLC, Agile
+
+Card 4 - Vibe Coding/AI Tools:
+- Icon: ⚡ or 🤖⚡
+- Title: AI-Powered Dev
+- Details: Cursor, Copilot, Antigravity, Rapid MVP
+
+### Featured Projects Grid
+Create interactive cards for these 5 projects. Each card should show on hover:
+
+**Project 1: AI-Powered Image Enhancer** (Graduation Project 2025)
+- Role: Lead Developer
+- Description: Trained CNN model on 1,000+ images using PyTorch for image quality enhancement
+- Tech: PyTorch, Python, Computer Vision
+- Highlight: Graduation project with research component
+
+**Project 2: WebTeb Symptom Checker Landing Page**
+- Role: Product Developer & Frontend Lead
+- Description: Stakeholder-driven landing page for healthcare symptom checker, focused on lead generation for MENA region hospitals
+- Tech: React, Figma, TailwindCSS
+- Highlight: Collaborated with content specialist, created PRD from stakeholder meetings
+
+**Project 3: Ramadan AI Chatbot MVP**
+- Role: Full-Stack Developer
+- Description: AI chatbot for Ramadan questions using RAG pipeline with Mawdoo and IslamWeb sources
+- Tech: React, TypeScript, Google Gemini, Express, SQLite
+- Highlight: Full MVP in under 1 month using vibe coding tools
+
+**Project 5: RESTful Authentication System**
+- Role: Backend Developer
+- Description: Secure user authentication API with token management for sign-up, login, logout
+- Tech: Django, REST APIs, Token Auth
+- Highlight: Clean, production-ready authentication flow
+
+### Experience Timeline (Vertical timeline or cards)
+- Mawdoo - AI & Product Owner Intern (June 2025 - Feb 2026)
+  * Managed agile MVPs from idea to deployment in 1 month
+  * Stakeholder research, product-market fit, AI integration
+  
+- Coach You Program - MoDEE (2025-2026)
+  * Startup development, business validation, Microsoft Azure DP-900
+  
+- QA Training - Princess Sumaya University (PSUT)
+  * Quality Assurance certification
+
+### Technical Skills Wall (Tag cloud style with categories)
+**Languages:** Python, Java, C#, JavaScript/TypeScript, HTML/CSS
+**Frameworks:** React, Django, ASP.NET, Express.js, Node.js
+**Styling:** Bootstrap, TailwindCSS
+**Databases:** PostgreSQL, SQLite
+**AI/ML:** PyTorch, CNNs, Gemini, RAG pipelines
+**Tools:** Git, GitHub, Figma, Cursor, Copilot, Agile/SDLC
+
+### Contact Section (ID card inspired)
+Create a contact card that mirrors the clean ID card style from the reference:
+- Email: Rahafrababaa2002@gmail.com
+- Phone: +962 77 859 3141 | +962 77 600 2782
+- Location: Amman, Jordan
+- GitHub: github.com/rahaf-om
+- LinkedIn: linkedin.com/in/rahaf-rababah-91155436b
+- Download CV button (simulated)
+
+Add a QR code simulation that links to portfolio (similar to ID card style)
+
+
+## INTERACTIVE REQUIREMENTS
+1. All project cards should have hover effects revealing more details
+2. Skill tags should be interactive (hover changes color)
+3. Contact info should be clickable (email opens mailto, phone shows tooltip)
+4. Smooth scroll navigation
+5. Mobile menu for smaller screens
+6. Download CV button should simulate download (alert message)
+
+## TECHNICAL IMPLEMENTATION
+- Write clean, semantic HTML5
+- Use CSS Grid and Flexbox for layouts
+- Implement CSS variables for colors
+- Make fully responsive (mobile, tablet, desktop)
+- Include Font Awesome or similar for icons
+- Use modern CSS features (backdrop-filter, smooth transitions)
+- No external dependencies besides fonts and icons
+- Self-contained HTML file with inline CSS
+
+## CONTENT TO INCLUDE (from CV document)
+- Job objective paragraph
+- Education: Yarmouk University, CS Graduate 2025
+- Hackathon: idea selected as startup 2024
+- Certifications: Azure DP-900, QA Training, Data Science Level 1
+- Soft skills: Problem-solving, research, collaboration
+
+## ADDITIONAL TOUCHES
+- Add a "Featured" badge on top projects
+- Include a "Hackathon startup idea selected 2024" badge
+- Subtle background pattern (tech grid or circuit lines)
+- Animated gradient orbs (very subtle)
+- Loading animation simulation for "Vibe Coding" feel
+
+The final output should be a single, complete HTML file that I can run in any browser. It should feel like a professional software engineer's portfolio that stands out while maintaining credibility and showcasing your unique product-oriented, AI-focused skill set.

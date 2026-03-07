@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-brand-dark bg-white dark:bg-slate-900 dark:text-gray-100 antialiased overflow-x-hidden transition-colors duration-300;
+  }
+}
+
+.tech-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(24, 164, 151, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(243, 156, 18, 0.04) 0%, transparent 40%),
+    linear-gradient(rgba(44, 62, 80, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(44, 62, 80, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-main;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-bold font-heading text-brand-dark dark:text-gray-100 mb-6 relative inline-block;
+}
+
+.section-title::after {
+  content: '';
+  @apply absolute -bottom-2 left-0 w-16 h-1 bg-gradient-main rounded-full;
+}
+
+html {
+  scroll-behavior: smooth;
+}

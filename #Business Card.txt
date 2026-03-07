@@ -1,0 +1,806 @@
+#Business Card :
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahaf Rababah - Product-Oriented Software Engineer</title>
+    <style>
+        :root {
+            --primary-dark: #2C3E50;
+            --secondary-teal: #18A497;
+            --accent-orange: #F39C12;
+            --light-bg: #ECF0F1;
+            --text-dark: #2C3E50;
+            --text-light: #ffffff;
+            --shadow-sm: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 30px 40px -20px rgba(44, 62, 80, 0.3);
+            --gradient-main: linear-gradient(135deg, var(--primary-dark), var(--secondary-teal));
+            --gradient-accent: linear-gradient(135deg, var(--secondary-teal), var(--accent-orange));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #667eea20, #764ba220), 
+                        radial-gradient(circle at 30% 50%, rgba(24, 164, 151, 0.1) 0%, transparent 50%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Floating tech pattern background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(44, 62, 80, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(44, 62, 80, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .card-wrapper {
+            perspective: 2000px;
+            width: 100%;
+            max-width: 550px;
+            transition: transform 0.5s ease;
+        }
+
+        .business-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 40px 35px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .business-card:hover {
+            transform: translateY(-15px) rotateX(2deg);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(24, 164, 151, 0.3);
+        }
+
+        /* Animated gradient orbs */
+        .orb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--secondary-teal) 0%, transparent 70%);
+            opacity: 0.1;
+            top: -150px;
+            right: -150px;
+            animation: orbFloat 10s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            top: auto;
+            right: auto;
+            animation: orbFloat 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -20px) scale(1.1); }
+        }
+
+        /* Tech pattern overlay */
+        .tech-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 30% 50%, rgba(24, 164, 151, 0.05) 0%, transparent 25%),
+                repeating-linear-gradient(45deg, rgba(44, 62, 80, 0.02) 0px, rgba(44, 62, 80, 0.02) 2px, transparent 2px, transparent 8px);
+            pointer-events: none;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .name-title h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .title-badge {
+            background: rgba(24, 164, 151, 0.1);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--secondary-teal);
+            display: inline-block;
+            border: 1px solid rgba(24, 164, 151, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            color: var(--primary-dark);
+            font-size: 14px;
+        }
+
+        .hackathon-badge {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hackathon-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3); }
+            50% { box-shadow: 0 5px 25px rgba(243, 156, 18, 0.5); }
+            100% { box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3); }
+        }
+
+        /* Project Showcase Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 35px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card {
+            background: white;
+            padding: 20px 12px;
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 1px solid rgba(44, 62, 80, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-main);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--secondary-teal);
+            box-shadow: 0 20px 30px -10px rgba(24, 164, 151, 0.2);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .project-name {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .project-tag {
+            font-size: 11px;
+            color: var(--secondary-teal);
+            background: rgba(24, 164, 151, 0.1);
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            margin: 5px 0;
+            font-weight: 600;
+        }
+
+        .project-highlight {
+            font-size: 10px;
+            color: var(--accent-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-highlight {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-detail-hover {
+            font-size: 10px;
+            color: var(--primary-dark);
+            margin-top: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-detail-hover {
+            opacity: 1;
+        }
+
+        /* Skill Clusters */
+        .skill-clusters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skill-tag {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--primary-dark);
+            border: 1px solid rgba(44, 62, 80, 0.1);
+            transition: all 0.3s ease;
+            cursor: default;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            animation: gentlePulse 3s infinite;
+        }
+
+        .skill-tag:hover {
+            background: var(--gradient-main);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 10px 20px -5px var(--secondary-teal);
+            animation: none;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Vibe coding indicator */
+        .vibe-indicator {
+            background: rgba(243, 156, 18, 0.05);
+            border-radius: 30px;
+            padding: 10px 18px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px dashed var(--accent-orange);
+            position: relative;
+            z-index: 2;
+        }
+
+        .vibe-indicator span {
+            font-size: 20px;
+            animation: zap 1.5s infinite;
+        }
+
+        @keyframes zap {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 5px var(--accent-orange)); }
+        }
+
+        .vibe-indicator p {
+            font-size: 12px;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .vibe-indicator strong {
+            color: var(--accent-orange);
+        }
+
+        /* Contact Hub */
+        .contact-hub {
+            background: rgba(236, 240, 241, 0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            background: white;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-main);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .contact-detail {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: var(--primary-dark);
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .copy-sim {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: var(--secondary-teal);
+            font-size: 12px;
+        }
+
+        .contact-item:hover .copy-sim {
+            opacity: 1;
+        }
+
+        /* QR & Social Section */
+        .qr-social {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 25px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .qr-code-sim {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-pixel {
+            width: calc(25% - 3px);
+            height: calc(25% - 3px);
+            background: var(--primary-dark);
+            border-radius: 3px;
+            animation: qrPulse 3s infinite;
+            opacity: 0.8;
+        }
+
+        .qr-pixel:nth-child(even) {
+            background: var(--secondary-teal);
+            animation-delay: 0.5s;
+        }
+
+        .qr-pixel:nth-child(3n) {
+            background: var(--accent-orange);
+            animation-delay: 1s;
+        }
+
+        @keyframes qrPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .qr-text {
+            font-size: 12px;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 15px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(44, 62, 80, 0.1);
+        }
+
+        .social-link:hover {
+            background: var(--gradient-main);
+            color: white;
+            transform: translateY(-3px) rotate(5deg);
+            box-shadow: 0 10px 20px -5px var(--secondary-teal);
+        }
+
+        /* Footer */
+        .card-footer {
+            margin-top: 25px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-button {
+            background: var(--gradient-main);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -5px var(--secondary-teal);
+            width: 100%;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px -5px var(--secondary-teal);
+        }
+
+        .vcard-sim {
+            margin-top: 12px;
+            font-size: 12px;
+            color: var(--primary-dark);
+            opacity: 0.7;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .vcard-sim:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            .business-card {
+                padding: 25px 20px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .qr-social {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-wrapper">
+        <div class="business-card">
+            <div class="orb"></div>
+            <div class="orb-2"></div>
+            <div class="tech-pattern"></div>
+            
+            <!-- Header Section -->
+            <div class="header">
+                <div class="name-title">
+                    <h1>Rahaf Rababah</h1>
+                    <div class="title-badge">Product-Oriented Software Engineer</div>
+                    <div class="location">
+                        <span>📍</span> Amman, Jordan
+                    </div>
+                </div>
+                <div class="hackathon-badge" title="MBMedxReact - Selected as Startup in Jordan 2024">
+                    🏆 Hackathon Winner '24
+                </div>
+            </div>
+
+            <!-- Project Showcase Grid -->
+            <div class="projects-grid">
+                <!-- Project 1: AI Image Enhancer (Graduation Project) -->
+                <div class="project-card">
+                    <div class="project-icon">🎓</div>
+                    <div class="project-name">AI Image Enhancer</div>
+                    <div class="project-tag">PyTorch | 1k+ Images</div>
+                    <div class="project-highlight">Computer Vision Specialist</div>
+                    <div class="project-detail-hover">CNN Model · Graduation '25</div>
+                </div>
+
+                <!-- Project 2: WebTeb Symptom Checker -->
+                <div class="project-card">
+                    <div class="project-icon">🏥</div>
+                    <div class="project-name">WebTeb Symptom</div>
+                    <div class="project-tag">React | Figma</div>
+                    <div class="project-highlight">Product-Driven Frontend</div>
+                    <div class="project-detail-hover">Stakeholder-Led Design</div>
+                </div>
+
+                <!-- Project 3: Ramadan AI Chatbot -->
+                <div class="project-card">
+                    <div class="project-icon">☪️</div>
+                    <div class="project-name">Ramadan AI</div>
+                    <div class="project-tag">React | Gemini</div>
+                    <div class="project-highlight">Full-Stack AI MVP</div>
+                    <div class="project-detail-hover">RAG Pipeline</div>
+                </div>
+            </div>
+
+            <!-- Vibe Coding Indicator -->
+            <div class="vibe-indicator">
+                <span>⚡</span>
+                <p><strong>Vibe Coding</strong> · AI Tools: Cursor · Copilot · Antigravity</p>
+            </div>
+
+            <!-- Skill Clusters -->
+            <div class="skill-clusters">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">Django</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">AI/ML</span>
+                <span class="skill-tag">Product Strategy</span>
+                <span class="skill-tag">SDLC</span>
+            </div>
+
+            <!-- Contact Hub -->
+            <div class="contact-hub">
+                <div class="contact-item" onclick="navigator.clipboard?.writeText('Rahafrababaa2002@gmail.com')">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-detail">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">Rahafrababaa2002@gmail.com</div>
+                    </div>
+                    <div class="copy-sim">📋 Copy</div>
+                </div>
+                
+                <div class="contact-item" onclick="navigator.clipboard?.writeText('+962778593141')">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-detail">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+962 77 859 3141</div>
+                    </div>
+                    <div class="copy-sim">📋 Copy</div>
+                </div>
+            </div>
+
+            <!-- QR & Social Section -->
+            <div class="qr-social">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div class="qr-code-sim">
+                        <div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div>
+                        <div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div>
+                        <div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div>
+                        <div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div><div class="qr-pixel"></div>
+                    </div>
+                    <div class="qr-text">
+                        <strong>Scan for Portfolio</strong><br>
+                        <span style="font-size: 10px;">LinkedIn · GitHub · Projects</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/rahaf-om" target="_blank" class="social-link" title="GitHub">⌨️</a>
+                    <a href="https://www.linkedin.com/in/rahaf-rababah-91155436b" target="_blank" class="social-link" title="LinkedIn">💼</a>
+                    <a href="#" class="social-link" title="Portfolio">🖥️</a>
+                </div>
+            </div>
+
+            <!-- Footer with Interactive Button -->
+            <div class="card-footer">
+                <button class="footer-button" onclick="alert('🌟 FULL PORTFOLIO HIGHLIGHTS:\n\n1. AI Image Enhancer (Graduation Project 2025)\n   • PyTorch CNN • 1000+ images • Computer Vision\n\n2. WebTeb Symptom Checker Landing Page\n   • React • Figma • Stakeholder-led product design\n\n3. Ramadan AI Chatbot MVP\n   • React • TypeScript • Google Gemini • RAG Pipeline\n\n4. Hackathon Winner: MBMedxReact (Startup Selection 2024)\n\n5. Vitiligo Diagnosis Research Paper (2023)\n   • Co-authored with Dr. Mohammad Ashraf Ottom')">
+                    🚀 View Full Portfolio (3+ Projects)
+                </button>
+                <div class="vcard-sim" onclick="alert('Download vCard simulation - Contact info saved!')">
+                    ⬇️ Download vCard
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth interactions
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                const text = this.querySelector('.contact-value').innerText;
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text);
+                    const copyMsg = this.querySelector('.copy-sim');
+                    const originalText = copyMsg.innerText;
+                    copyMsg.innerText = '✅ Copied!';
+                    setTimeout(() => {
+                        copyMsg.innerText = originalText;
+                    }, 2000);
+                }
+            });
+        });
+
+        // Project card click simulation
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            card.addEventListener('click', () => {
+                const projects = [
+                    'AI Image Enhancer - Graduation Project 2025\nTrained CNN model with 1000+ high-res images in PyTorch',
+                    'WebTeb Symptom Checker - Product-Driven Frontend\nReact, Figma, Stakeholder collaboration for healthcare landing page',
+                    'Ramadan AI Chatbot - Full-Stack MVP\nReact, TypeScript, Google Gemini, RAG pipeline with Mawdoo/IslamWeb sources'
+                ];
+                alert(`🔍 ${projects[index]}`);
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+>>>>>>>>>>
+Prompt for business card 
+You are an expert UI/UX designer and frontend developer specializing in professional portfolio design and digital business cards. Create a stunning, interactive digital business card for Rahaf Rababah, a Product-Oriented Software Engineer, that showcases her three signature projects:
+
+1. **AI-Powered Image Enhancer** (Graduation Project 2025) - CNN model in PyTorch with 1000+ images
+2. **WebTeb Symptom Checker Landing Page** - Frontend product-driven design with stakeholder collaboration
+3. **Ramadan AI Chatbot MVP** - Full-stack AI chatbot with React, TypeScript, and Google Gemini integration
+
+## DESIGN REQUIREMENTS:
+
+### Visual Identity:
+- **Color Palette:** Use a sophisticated gradient from #2C3E50 (dark blue/primary) to #18A497 (teal/secondary) with #F39C12 (orange/accent) for highlights
+- **Typography:** Use 'Inter' font family with elegant font weights (300-700)
+- **Style:** Modern glassmorphism with subtle tech patterns, professional yet innovative
+
+### Layout Structure:
+1. **Header Section:** Name, title "Product-Oriented Software Engineer", and location (Amman, Jordan)
+2. **Project Showcase Grid:** Three distinctive cards/badges highlighting each project with:
+   - Project icon/emoji representing its purpose
+   - Project name and brief 5-word value statement
+   - Tech stack indicators (colors matching brand palette)
+3. **Contact Hub:** Email and phone with copy functionality simulation
+4. **Social & QR:** LinkedIn, GitHub links and a visual QR code element
+5. **Skill Clusters:** Floating expertise tags that highlight on hover
+
+### Interactive Elements:
+- Each project card should have a subtle hover animation that reveals more details
+- Skill tags should pulse gently and expand on hover
+- Overall card should have a 3D lift effect on hover
+- Add a "View Full Portfolio" interactive footer
+
+### Project-Specific Details to Include:
+
+**Project 1 - AI Image Enhancer (Grad Project):**
+- Icon: 🎓 or 🖼️
+- Tag: "PyTorch CNN | 1k+ Images"
+- Highlight: "Computer Vision Specialist"
+
+**Project 2 - WebTeb Symptom Checker:**
+- Icon: 🏥 or 📱
+- Tag: "React | Figma | Stakeholder-Led"
+- Highlight: "Product-Driven Frontend"
+
+**Project 3 - Ramadan AI Chatbot:**
+- Icon: ☪️ or 🤖
+- Tag: "React | Gemini | RAG Pipeline"
+- Highlight: "Full-Stack AI MVP"
+
+### Additional Requirements:
+- Ensure responsive design for mobile viewing
+- Include a subtle reference to "vibe coding" and AI tools expertise
+- Add an interactive element that shows your hackathon achievement (MBMedxReact startup selection)
+- Make it feel like a mini-portfolio, not just a contact card
+- Include a "Download vCard" simulation button
+
+### Technical Implementation:
+- Write clean, semantic HTML5
+- Use CSS Grid and Flexbox for layout
+- Implement smooth transitions (0.3s ease)
+- Add :hover and :focus states for accessibility
+- Create a simulated QR code design (pattern only, not functional)
+- Use CSS variables for easy color customization
+
+The final output should be a single, self-contained HTML file with inline CSS that works in any modern browser. The design should communicate: "This is a product-oriented engineer who builds AI solutions with beautiful frontends."
+
+
+Suggested Enhancements (If You Want to Iterate):
+Enhancement	Why	How
+Project Icons	Make them more specific	Use actual Font Awesome icons instead of emojis
+QR Code	Make it functional	Generate a real QR code to your LinkedIn/portfolio
+Photo/Avatar	More personal	Add a small professional photo or avatar
+GitHub Stats	Social proof	Add a "3+ public repos" indicator
+Testimonial Snippet	Credibility	Short quote from Dr. Mohammad Ashraf Ottom or Mawdoo
+Download vCard	Make it work	Create actual .vcf file download
