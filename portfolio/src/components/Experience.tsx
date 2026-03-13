@@ -44,9 +44,9 @@ const certificates = [
     image: "/images/certificates/11.jpg",
   },
   {
-    title: "Professional Full Stack Developer & Designer",
-    description: "Advanced certification recognizing comprehensive skills as a professional full stack developer and UI/UX designer.",
-    image: "/images/certificates/12.jpg",
+    title: "Professional Full Stack Developer & AI Engineer",
+    description: "Advanced certification recognizing comprehensive skills as a professional full stack developer and AI Engineer.",
+    image: "/images/certificates/image.png",
   },
   {
     title: "QA Training Certification",
@@ -114,13 +114,13 @@ const Experience = () => {
                   </ul>
                 </div>
                 {exp.image && (
-                  <div 
+                  <div
                     className="mt-6 lg:mt-0 lg:w-1/3 flex-shrink-0 cursor-pointer"
                     onClick={() => setSelectedImage(exp.image!)}
                   >
-                    <img 
-                      src={exp.image} 
-                      alt={`${exp.title} Certificate`} 
+                    <img
+                      src={exp.image}
+                      alt={`${exp.title} Certificate`}
                       className="rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md object-cover w-full h-auto max-h-48 hover:scale-[1.02] transition-transform duration-300"
                     />
                   </div>
@@ -165,9 +165,9 @@ const Experience = () => {
                   </div>
                 ) : (
                   <>
-                    <img 
-                      src={cert.image} 
-                      alt={cert.title} 
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-6">
@@ -217,7 +217,7 @@ const Experience = () => {
               className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
+              <button
                 onClick={closeImageViewer}
                 className="absolute -top-12 right-0 sm:-right-12 sm:top-0 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-colors backdrop-blur-md"
                 aria-label="Close"
@@ -226,9 +226,9 @@ const Experience = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              <img 
-                src={selectedImage} 
-                alt="Full screen certificate" 
+              <img
+                src={selectedImage}
+                alt="Full screen certificate"
                 className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
               />
             </motion.div>
