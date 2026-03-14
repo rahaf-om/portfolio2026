@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const experiences = [
+type ExperienceItem = {
+  period: string;
+  title: string;
+  company: string;
+  points: string[];
+  image?: string;
+  images?: string[];
+};
+
+const experiences: ExperienceItem[] = [
   {
     period: 'June 2025 - Feb 2026',
     title: 'AI & Product Owner Intern',
@@ -20,6 +29,17 @@ const experiences = [
       'Validated business models for emerging startup concepts',
       'Earned Microsoft Azure DP-900 certification for data fundamentals',
     ],
+  },
+  {
+    period: '2024',
+    title: 'Hackathon 2024 Startup Project',
+    company: 'Professional Full Stack Engineer & Designer',
+    points: [
+      'Engineered and designed an innovative startup product from concept to prototype during Hackathon 2024.',
+      'Architected full-stack solutions while spearheading UX/UI design for maximum user engagement.',
+      'Demonstrated end-to-end product delivery under aggressive time constraints, showcasing dual expertise in engineering and design.'
+    ],
+    images: ['/images/startup.png', '/images/startup2.png'],
   },
   {
     period: '2024',
@@ -113,7 +133,7 @@ const Experience = () => {
                     ))}
                   </ul>
                 </div>
-                {exp.image && (
+                {exp.image && !exp.images && (
                   <div
                     className="mt-6 lg:mt-0 lg:w-1/3 flex-shrink-0 cursor-pointer"
                     onClick={() => setSelectedImage(exp.image!)}
@@ -123,6 +143,26 @@ const Experience = () => {
                       alt={`${exp.title} Certificate`}
                       className="rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md object-cover w-full h-auto max-h-48 hover:scale-[1.02] transition-transform duration-300"
                     />
+                  </div>
+                )}
+                {exp.images && (
+                  <div className="mt-6 lg:mt-0 lg:w-1/3 md:w-1/2 flex-shrink-0 grid grid-cols-2 gap-3 relative group/images">
+                    {exp.images.map((img, idx) => (
+                      <div
+                        key={idx}
+                        className={`cursor-pointer overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 shadow-md relative ${idx === 0 ? 'transform rotate-[-2deg]' : 'transform rotate-[2deg] translate-y-2'} hover:shadow-xl hover:z-10 transition-all duration-300 hover:rotate-0 hover:scale-[1.05]`}
+                        onClick={() => setSelectedImage(img)}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 z-10 hidden sm:flex items-end justify-center pb-2">
+                          <svg className="w-6 h-6 text-white drop-shadow-md mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        </div>
+                        <img
+                          src={img}
+                          alt={`${exp.title} Image ${idx + 1}`}
+                          className="object-cover w-full h-32 sm:h-40 md:h-48 bg-slate-100 dark:bg-slate-800"
+                        />
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
